@@ -50,8 +50,10 @@ export default class Content {
         //8. feladat
         res.write("8. feladat:\n");
         Megold.kihuzottSzamokStat.forEach((x, i) => {
-            res.write(`&nbsp;${i+1} - ${x}\n`);
+            res.write(`&nbsp;${i + 1} - ${x}\n`);
         });
+        //9. feladat
+        res.write(`9. feladat: Ki nem húzott prímek: ${Megold.kiNemHuzottPrimek.join(", ")}`);
 
         // <---- Fejezd be a kódolást
 

@@ -1,6 +1,5 @@
 ﻿import http from "http";
 import Content from "./Content";
-// import Content2 from "./Content2";
 
 class Program {
     constructor() {

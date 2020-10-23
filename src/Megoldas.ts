@@ -50,8 +50,18 @@ export default class Megoldas {
         });
         return szamokStat;
     }
-
-    //9.es
+    
+    /**
+     * @returns number
+     */
+    public get kiNemHuzottPrimek(): number[] {
+        let primek: number[] = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89];
+        let kiPrimek: number[] = [];
+        this.kihuzottSzamokStat.forEach((x, i) => {
+            if (x === 0 && primek.includes(i + 1)) kiPrimek.push(i + 1);
+        });
+        return kiPrimek;
+    }
 
     /**
      * @returns number
