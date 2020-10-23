@@ -44,7 +44,7 @@ export default class Content {
         //5. feladat
         res.write(`5. feladat: ${Megold.voltENemKihzottSzam ? "Volt" : "Nem volt"} nem kihúzott szám a vizsgált időszakban.\n`);
         //6. feladat
-        res.write(`6. feladat: Páratlan számok a hűzásokban: ${Megold.paratlanCount} db\n`);
+        res.write(`6. feladat: Páratlan számok a húzásokban: ${Megold.paratlanCount} db\n`);
         //7. feladat
         Megold.filebaIr();
         //8. feladat
