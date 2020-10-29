@@ -8,8 +8,6 @@
 
 [Heroku][heroku]
 
-**Sajnos egyenlőre nem működik...**
-
 ## A. Feladatok: [PDF][feladat]
 
 1. feladat: Kérje be a felhasználótól az 52. hét megadott lottószámait!
