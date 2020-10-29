@@ -52,10 +52,10 @@ export default class Content {
         //7. feladat
         Megold.filebaIr();
         //8. feladat
-        res.write("8. feladat:\n&nbsp;");
+        res.write("8. feladat:\n");
         Megold.kihuzottSzamokStat.forEach((x, i) => {
             res.write(` ${x}`);
-            if (i % 15 === 14) res.write("\n&nbsp;");
+            if (i % 15 === 14) res.write("&nbsp;\n");
         });
         //9. feladat
         res.write(`9. feladat: Ki nem húzott prímek: ${Megold.kiNemHuzottPrimek.join(", ")}\n`);
