@@ -59,7 +59,19 @@ export default class Content {
         });
         //9. feladat
         res.write(`9. feladat: Ki nem húzott prímek: ${Megold.kiNemHuzottPrimek.join(", ")}\n`);
-        res.write(`Github repository: <a href="https://github.com/csiszaralex/Lotto">Klikk ide!</a>`);
+        //GIT
+        res.write(`Github repository: <a href="https://github.com/csiszaralex/Lotto">Klikk ide!</a>\n`);
+        //Fileok kiírása
+        let filek: string[] = ["lottosz.dat", "lotto52.ki"];
+        filek.forEach(x => {
+            res.write(`\n${x} file:\n`);
+            fs.readFileSync(x)
+                .toString()
+                .split("\n")
+                .forEach(y => {
+                    res.write(`\t${y}`);
+                });
+        });
 
         // <---- Fejezd be a kódolást
 
