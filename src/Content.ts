@@ -28,7 +28,9 @@ export default class Content {
         //1. feladat
         let be1: string = params.be1 as string;
         if (!be1) be1 = "";
-        res.write(`1. feladat: Kérem az 52. hét lottó számait: <input type='text' name='be1' value='${be1}' style='max-width:100px;' onChange='this.form.submit();' pattern='/^[0-9]+[ ][0-9]+[ ][0-9]+[ ][0-9]+[ ][0-9]+$/'>\n`);
+        res.write(
+            `1. feladat: Kérem az 52. hét lottó számait: <input type='text' name='be1' value='${be1}' style='max-width:100px;' onChange='this.form.submit();' pattern='/^[0-9]+[ ][0-9]+[ ][0-9]+[ ][0-9]+[ ][0-9]+$/'>\n`
+        );
         //2. feladat
         let szamok52: number[] = [];
         if (be1.split(" ").length == 5) be1.split(" ").forEach(x => szamok52.push(parseInt(x)));
@@ -37,8 +39,10 @@ export default class Content {
         res.write("2. feladat: Rendezett számok: " + szamok52.join(" ") + "\n");
         //3. feladat
         let be3Het: number = parseInt(params.be3 as string);
-        if (isNaN(be3Het)) be3Het = 0;
-        res.write(`3. feladat: Kérem egy hét sorszámát: <input type='text' name='be3' id='be3'  style='max-width:300px;' class='form-control' value='${be3Het}' onChange='this.form.submit();'>\n`);
+        if (isNaN(be3Het)) be3Het = 1;
+        res.write(
+            `3. feladat: Kérem egy hét sorszámát: <input type='text' name='be3' id='be3'  style='max-width:300px;' class='form-control' value='${be3Het}' onChange='this.form.submit();'>\n`
+        );
         //4. feladat
         res.write(`4. feladat: A(z) ${be3Het}. heti nyerőszámok: ${Megold.xHetiNyeroszamok(be3Het)}\n`);
         //5. feladat
@@ -48,12 +52,14 @@ export default class Content {
         //7. feladat
         Megold.filebaIr();
         //8. feladat
-        res.write("8. feladat:\n");
+        res.write("8. feladat:\n&nbsp;");
         Megold.kihuzottSzamokStat.forEach((x, i) => {
-            res.write(`&nbsp;${i + 1} - ${x}\n`);
+            res.write(` ${x}`);
+            if (i % 15 === 14) res.write("\n&nbsp;");
         });
         //9. feladat
-        res.write(`9. feladat: Ki nem húzott prímek: ${Megold.kiNemHuzottPrimek.join(", ")}`);
+        res.write(`9. feladat: Ki nem húzott prímek: ${Megold.kiNemHuzottPrimek.join(", ")}\n`);
+        res.write(`Github repository: <a href="https://github.com/csiszaralex/Lotto">Klikk ide!</a>`);
 
         // <---- Fejezd be a kódolást
 

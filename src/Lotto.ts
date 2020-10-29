@@ -1,7 +1,6 @@
-// 5 db 1-90 emelkedő
 export default class Lotto {
-    private het: number;
-    private szamok: number[] = [];
+    private _het: number;
+    private _szamok: number[] = [];
 
     /**
      * @param  {string} fileSora
@@ -10,23 +9,23 @@ export default class Lotto {
     constructor(fileSora: string, hetSrsz: number) {
         const adatok: string[] = fileSora.split(" ");
         adatok.forEach(x => {
-            this.szamok.push(parseInt(x));
+            this._szamok.push(parseInt(x));
         });
-        this.het = hetSrsz;
+        this._het = hetSrsz;
     }
 
     /**
      * @returns Number
      */
     public get szamokLista(): number[] {
-        return this.szamok;
+        return this._szamok;
     }
 
     /**
      * @returns number
      */
     public get paratlanCount(): number {
-        return this.szamok.filter(x => x % 2 === 0).length;
+        return this._szamok.filter(x => x % 2 === 1).length;
     }
 
     /**
@@ -34,6 +33,6 @@ export default class Lotto {
      * @returns string
      */
     public join(szeparator: string): string {
-        return this.szamok.join(szeparator);
+        return this._szamok.join(szeparator);
     }
 }

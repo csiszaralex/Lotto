@@ -3,18 +3,33 @@ import fs from "fs";
 
 export default class Megoldas {
     private lottoSzamok: Lotto[] = [];
-
+    
     /**
      * @param  {string} allomanyNeve
      */
-    constructor(allomanyNeve: string) {
-        fs.readFileSync(allomanyNeve)
-            .toString()
-            .split("\n")
-            .forEach((x, i) => {
-                const fileSora: string = x.trim();
-                this.lottoSzamok.push(new Lotto(fileSora, i));
+    constructor(allomanyNeve: string);
+    /**
+     * @param  {string} adatokBe
+     * @param  {boolean} tesztE
+     */
+    constructor(adatokBe: string, tesztE: boolean);
+    
+   
+    constructor(adat: string, teszt?: boolean) {
+        if (teszt == undefined) {
+            fs.readFileSync(adat)
+                .toString()
+                .split("\n")
+                .forEach((x, i) => {
+                    const fileSora: string = x.trim();
+                    this.lottoSzamok.push(new Lotto(fileSora, i + 1));
+                });
+        } else {
+            adat.split(";").forEach((x, i) => {
+                const adatSor: string = x.trim();
+                this.lottoSzamok.push(new Lotto(adatSor, i + 1));
             });
+        }
     }
 
     /**
@@ -50,7 +65,7 @@ export default class Megoldas {
         });
         return szamokStat;
     }
-    
+
     /**
      * @returns number
      */
@@ -90,6 +105,6 @@ export default class Megoldas {
      * @returns string
      */
     public xHetiNyeroszamok(hetSrsz: number): string {
-        return this.lottoSzamok[hetSrsz - 1].join(" ");
+        return this.lottoSzamok[hetSrsz-1].join(" ");
     }
 }
