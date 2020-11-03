@@ -55,7 +55,7 @@ export default class Content {
         res.write(`<div class="col-4">${szamok52.join(" ")}</div></div>`);
         //3. feladat
         let be3Het: number = parseInt(params.be3 as string);
-        if (isNaN(be3Het)) be3Het = 1;
+        if (isNaN(be3Het) || be3Het > 52 || be3Het < 1) be3Het = 1;
         res.write(div);
         res.write(col4);
         res.write('<label for="fel3" class="col-form-label">3. feladat: Kérem egy hét sorszámát:</label></div>');
@@ -111,7 +111,7 @@ export default class Content {
                   <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">`);
-                res.write(`<table class="table table-striped">
+            res.write(`<table class="table table-striped">
                 <thead>
                   <tr>
                     <th scope="col">#</th>
@@ -119,12 +119,12 @@ export default class Content {
                   </tr>
                 </thead><tbody>`);
 
-                fs.readFileSync(x)
+            fs.readFileSync(x)
                 .toString()
                 .split("\n")
                 .forEach((y, i) => {
                     res.write(` <tr>
-                    <th scope="row">${i+1}</th>
+                    <th scope="row">${i + 1}</th>
                     <td>${y}</td>
                   </tr>`);
                 });
@@ -137,7 +137,6 @@ export default class Content {
             </div>
           </div>`);
         });
-
 
         // <---- Fejezd be a kódolást
 

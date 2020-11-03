@@ -1,7 +1,7 @@
 import Megoldas from "../Megoldas";
 
 describe("Megoldás osztály unit tesztek: ", ()=>{
-  const tesztMegoldas = new Megoldas("1 1 3 4 5;7 8 9 10 11;2 13 17 19 23;29 31 37 41 43 47;53 59 61 67 71", true);
+  const tesztMegoldas: Megoldas = new Megoldas("1 1 3 4 5;7 8 9 10 11;2 13 17 19 23;29 31 37 41 43 47;53 59 61 67 71", true);
   it("Volt e nem kihúzott szám", async ()=>{
     expect(tesztMegoldas.voltENemKihzottSzam).toBe(true);
   });
