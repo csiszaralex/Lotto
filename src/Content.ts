@@ -31,7 +31,7 @@ export default class Content {
 
         // Kezd a kódolást innen -->
         const div: string = '<div class="row align-items-center mb-3">';
-        const col4: string = '<div class="col-4">';
+        const col4: string = '<div class="col-12 col-md-4">';
         let Megold: Megoldas = new Megoldas("lottosz.dat");
         //1. feladat
         let be1: string = params.be1 as string;
@@ -51,8 +51,8 @@ export default class Content {
         szamok52.sort((a, b) => a - b);
         Megold.add = szamok52;
         res.write(div);
-        res.write('<div class="col-4">2. feladat: Rendezett számok:</div>');
-        res.write(`<div class="col-4">${szamok52.join(" ")}</div></div>`);
+        res.write(col4+'2. feladat: Rendezett számok:</div>');
+        res.write(col4+`${szamok52.join(" ")}</div></div>`);
         //3. feladat
         let be3Het: number = parseInt(params.be3 as string);
         if (isNaN(be3Het) || be3Het > 52 || be3Het < 1) be3Het = 1;
@@ -65,39 +65,39 @@ export default class Content {
         res.write('<span class="form-text">Egy hét száma 1-52-ig</span></div></div>');
         //4. feladat
         res.write(div);
-        res.write(`<div class="col-4">4. feladat: A(z) ${be3Het}. heti nyerőszámok:</div>`);
-        res.write(`<div class="col-4">${Megold.xHetiNyeroszamok(be3Het)}</div></div>`);
+        res.write(`${col4}4. feladat: A(z) ${be3Het}. heti nyerőszámok:</div>`);
+        res.write(`${col4}${Megold.xHetiNyeroszamok(be3Het)}</div></div>`);
         //5. feladat
         res.write(div);
-        res.write(`<div class="col-6">5. feladat: ${Megold.voltENemKihzottSzam ? "Volt" : "Nem volt"} nem kihúzott szám a vizsgált időszakban.</div></div>`);
+        res.write(`<div class="col-12">5. feladat: ${Megold.voltENemKihzottSzam ? "Volt" : "Nem volt"} nem kihúzott szám a vizsgált időszakban.</div></div>`);
         //6. feladat
         res.write(div);
-        res.write('<div class="col-4">6. feladat: Páratlan számok a húzásokban:</div>');
-        res.write(`<div class="col-4">${Megold.paratlanCount} db</div></div>`);
+        res.write(col4+'6. feladat: Páratlan számok a húzásokban:</div>');
+        res.write(`${col4}${Megold.paratlanCount} db</div></div>`);
         //7. feladat
         Megold.filebaIr();
         //8. feladat
-        res.write('<div class="row align-items-center mb-1"><div class="col-3">8. feladat: Lottószámok:</div></div>');
-        res.write('<div class="row mb-1"><div class="col-4"></div><div class="col-4">');
+        res.write(`<div class="row align-items-center mb-1">${col4}8. feladat: Lottószámok:</div></div>`);
+        res.write(`<div class="row mb-1">${col4}</div>${col4}`);
         Megold.kihuzottSzamokStat.forEach((x, i) => {
             res.write(` ${x}`);
             if (i % 15 === 14) {
                 res.write("</div></div>");
-                if (i != 89) res.write('<div class="row mb-1"><div class="col-4"></div><div class="col-4">');
+                if (i != 89) res.write(`<div class="row mb-1">${col4}</div>${col4}`);
             }
         });
         //9. feladat
         res.write(div);
-        res.write('<div class="col-4">9. feladat: Ki nem húzott prímek:</div>');
-        res.write(`<div class="col-4">${Megold.kiNemHuzottPrimek.join(", ")} db</div></div>`);
+        res.write(col4+'9. feladat: Ki nem húzott prímek:</div>');
+        res.write(`${col4}${Megold.kiNemHuzottPrimek.join(", ")} db</div></div>`);
         //GIT
         res.write('<div class="row align-items-center mb-3 mt-5">');
-        res.write('<div class="col-4"><a href="https://github.com/csiszaralex/Lotto"><button type="button" class="btn btn-info">GitHub</button></a></div>');
+        res.write('<div class="col-12 col-sm-4"><a href="https://github.com/csiszaralex/Lotto"><button type="button" class="btn btn-info">GitHub</button></a></div>');
 
         //Filek
         let filek: string[] = ["lottosz.dat", "lotto52.ki"];
         filek.forEach(x => {
-            res.write(`<div class="col-4">
+            res.write(`<div class="col-12 col-sm-4 mt-2 mt-0-sm">
             <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#${x.split(".")[0]}">${x}</button>
           </div>`);
         });
