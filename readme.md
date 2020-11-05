@@ -2,7 +2,7 @@
 
 ## TypeScript-ben megvalósítva
 
-    2005. május 19.-ei emelt közismereti informatika érettségi programozás feladata
+2005\. május 19.-ei emelt közismereti informatika érettségi programozás feladata
 
 ## Heroku teszt:
 
